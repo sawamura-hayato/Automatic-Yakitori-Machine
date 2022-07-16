@@ -3,6 +3,8 @@
 
 ## Url
 
+(https://s1-haya.github.io/Automatic-Yakitori-Machine/)
+
 
 ## Explanation
 焼き鳥の部位や生肉の写真を見れるアプリです。
@@ -15,6 +17,7 @@
 鶏の各部位に番号があります。
 キーボードの操作どうりに押していただくと各部位が出力されます。
 
+
 キーボード操作
 
 数字　
@@ -25,6 +28,7 @@ Enter
 
 Backspace 
 => 数字を消す
+
 
 
 hover
