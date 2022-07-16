@@ -66,11 +66,14 @@ class Machine{
         return mainDiv;
     }
 
-    // タイトル作成
+    // タイトル作成と操作説明
     static createTitleHTML(){
         let title = document.createElement("h2");
         title.classList.add("text-center","py-3","anek-font")
-        title.innerHTML = "焼き鳥"
+        title.innerHTML = "操作説明(click)"
+        title.addEventListener("click",function(){
+            alert("鶏の各部位に番号があります。番号は1~14です。\nキーボードの操作どうりに押していただくと各部位が出力されます。\n\nキーボード操作\n数字->番号を入力\nEnter->番号を出力\nBackspace->数字を消す")
+        })
         return title;
     }
 
@@ -143,6 +146,8 @@ class Machine{
 
         return sliderDiv;
     }
+
+   
 
     //ボタン式(キーボード式)
     static createKeydown(){
