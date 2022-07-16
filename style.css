@@ -1,0 +1,72 @@
+.bg-orenge{
+    background-color: rgb(141, 111, 55);
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.bg-white{
+    background-color:white ;
+    background-size: auto;
+    max-height: 100%;
+
+}
+
+
+.text-red{
+    color: rgb(226, 0, 0);
+}
+
+
+img{
+    width: 100% ;
+    height: 100%;
+    position: fixed;
+}
+
+#slider:hover{
+    transform: scale(1.4);
+
+}
+
+
+.anek-font{
+    font-family: 'Yuji Mai', serif;
+}
+
+.border{
+    border:1px solid black !important;
+    border-width: 8px !important;
+}
+
+.border-bottom{
+    border-bottom: 1px solid rgb(141, 111, 55) !important;
+    border-width: 1px;
+
+}
+
+.appearImg{
+    animation: deplete 1s linear reverse forwards;
+}
+
+.disappearImg{
+    animation: deplete 1s linear forwards;
+}
+
+@keyframes deplete {
+    0%{
+        width: 100%;
+        opacity: 1;
+        transform: scale(0.3);
+    }
+    100%{
+        width: 0%;
+        opacity: 0;
+        transform: scale(0);
+    }
+    
+}
+
+.none-border{
+    border: none;
+}
