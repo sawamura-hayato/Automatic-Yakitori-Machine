@@ -28,39 +28,39 @@ const yakitoriList = [
 class Machine{
     static createHTML(){
         // HTMLへ
-        let  target = document.getElementById("target");
+        const  target = document.getElementById("target");
         target.classList.add("d-flex" ,"bg-orenge","flex-column","align-items-center")
         
         // main
-        let mainDiv = Machine.createMainHTML();
+        const mainDiv = Machine.createMainHTML();
         target.append(mainDiv);
     }
     
     static createMainHTML(){
-        let mainDiv = document.createElement("div");
+        const mainDiv = document.createElement("div");
         mainDiv.id = "Yakitori"
         mainDiv.classList.add("d-flex","justify-content-center","flex-wrap","m-5")
         
         // 大枠
-        let box = document.createElement("div");
+        const box = document.createElement("div");
         box.classList.add("col-12","d-flex","flex-column","bg-white","border");
         mainDiv.append(box);
 
         // タイトル
-        let titleDiv = Machine.createTitleHTML();
+        const titleDiv = Machine.createTitleHTML();
         box.append(titleDiv)
 
         // flex box
-        let flexDiv = document.createElement("div");
+        const flexDiv = document.createElement("div");
         flexDiv.classList.add("d-flex")
         box.append(flexDiv)
          
         // 焼き鳥の部位(画像)
-        let leftDiv = Machine.createLHTML();
+        const leftDiv = Machine.createLHTML();
         flexDiv.append(leftDiv);
 
         // 焼き鳥の説明と焼き鳥のスライド画像
-        let rightDiv = Machine.createRHTML();
+        const rightDiv = Machine.createRHTML();
         flexDiv.append(rightDiv);
        
         return mainDiv;
@@ -68,18 +68,18 @@ class Machine{
 
     // タイトル作成と操作説明
     static createTitleHTML(){
-        let title = document.createElement("h2");
+        const title = document.createElement("h2");
         title.classList.add("text-center","py-3","anek-font")
         title.innerHTML = "操作説明(click)"
         title.addEventListener("click",function(){
-            alert("鶏の各部位に番号があります。番号は1~14です。\nキーボードの操作どうりに押していただくと各部位が出力されます。\n\nキーボード操作\n数字->番号を入力\nEnter->番号を出力\nBackspace->数字を消す")
+            alert("鶏の各部位に番号があります。番号は0~14です。\nキーボードの操作どおりに押していただくと各部位が出力されます。\n\nキーボード操作\n数字(0~9)->番号から入力した数字が出力\nEnter->各部位の番号が出力\nBackspace->番号にある数字を削除")
         })
         return title;
     }
 
     // 鶏の部位(画像)
     static createLHTML(){
-        let yakitoriImg = document.createElement("img");
+        const yakitoriImg = document.createElement("img");
         yakitoriImg.src = "images/FACD6797-171A-40B9-A030-62FB78DF7A19.png"
         yakitoriImg.classList.add("col-12","col-md-6","d-flex","justify-content-center","align-items-center")
 
@@ -89,19 +89,19 @@ class Machine{
 
     // 焼き鳥の説明と焼き鳥の部位(画像)
     static createRHTML(){
-        let rightDiv = document.createElement("div");
+        const rightDiv = document.createElement("div");
         rightDiv.classList.add("col-12","col-md-6","d-flex","flex-column");
         
-        // let explaDiv = document.createElement("div");
+        // const explaDiv = document.createElement("div");
         // explaDiv.classList.add()
         // explaDiv.innerHTML = "サンプル"
-        let explaDiv = Machine.createExplaHTML();
+        const explaDiv = Machine.createExplaHTML();
         rightDiv.append(explaDiv);
 
-        // let sliderDiv = document.createElement("div");
+        // const sliderDiv = document.createElement("div");
         // sliderDiv.classList.add()
         // sliderDiv.innerHTML = "サンプル２";
-        let sliderDiv = Machine.createSlider();
+        const sliderDiv = Machine.createSlider();
         rightDiv.append(sliderDiv);
 
         return rightDiv;
@@ -109,7 +109,7 @@ class Machine{
      
     // 焼き鳥の説明
     static createExplaHTML(){
-        let explaDiv = document.createElement("div");
+        const explaDiv = document.createElement("div");
         explaDiv.classList.add("border","bg-white","pt-3")
         explaDiv.innerHTML = 
         `
@@ -131,14 +131,14 @@ class Machine{
     
     // 焼き鳥の部位(画像)
     static createSlider(){
-        let sliderDiv = document.createElement("div");
+        const sliderDiv = document.createElement("div");
         sliderDiv.id = "slider";
         sliderDiv.classList.add("d-flex","justify-content-center","align-items-center","mt-5")
 
-        let main = document.createElement("div");
+        const main = document.createElement("div");
         main.classList.add("main","appearImg");
         main.setAttribute("data-index","undefined");
-        let extra = document.createElement("div");
+        const extra = document.createElement("div");
         extra.classList.add("extra","disappearImg");
 
         sliderDiv.append(main);
@@ -151,12 +151,12 @@ class Machine{
 
     //ボタン式(キーボード式)
     static createKeydown(){
-        let body = document.querySelectorAll("body")[0];
+        const body = document.querySelectorAll("body")[0];
         body.addEventListener("keydown",function(event){
-            let key = event.key;
+            const key = event.key;
             console.log(key)
-            let keyN = parseInt(key);
-            let yakitoriId = document.getElementById("yakitoriId");
+            const keyN = parseInt(key);
+            const yakitoriId = document.getElementById("yakitoriId");
 
             if(0 <= keyN && keyN <= 9){
                 
@@ -164,7 +164,7 @@ class Machine{
             }
             if(key == "Enter"){
                 if(yakitoriId.value >= yakitoriList.length){
-                    alert("please enter Yakitori number from 0 to 15.");
+                    alert("please enter Yakitori number from 0 to 14.");
                 }
                 else{
                     Machine.newestInfo(yakitoriId.value);
@@ -175,7 +175,7 @@ class Machine{
                 yakitoriId.value = "";
             }
             if(key == "Backspace"){
-                let idString = yakitoriId.value;
+                const idString = yakitoriId.value;
                 yakitoriId.value = idString.substring(0,idString.length-1);
             }
 
@@ -184,7 +184,7 @@ class Machine{
 
     //説明更新
     static newestInfo(id){
-        let currentInfo = yakitoriList[id];
+        const currentInfo = yakitoriList[id];
 
         document.getElementById("yakitoriId").value = id;
         document.querySelector("#part").innerHTML = `${currentInfo.part}`;
@@ -193,13 +193,13 @@ class Machine{
 
     //画像更新
     static newestSlider(id){
-        let main = document.querySelector(".main");
-        let extra = document.querySelector(".extra");
+        const main = document.querySelector(".main");
+        const extra = document.querySelector(".extra");
         // console.log(main.innerHTML);
         
         // main.setAttribute("data-index",undefined);
-        let currentId =  (main.getAttribute("data-index") === "undefined") ? 0 : parseInt(main.getAttribute("data-index"));
-        let next = yakitoriList[id];
+        const currentId =  (main.getAttribute("data-index") === "undefined") ? 0 : parseInt(main.getAttribute("data-index"));
+        const next = yakitoriList[id];
         
         extra.innerHTML = `<img src="${yakitoriList[currentId].url}" class="img-fluid">`;
         main.innerHTML = "";
@@ -209,7 +209,7 @@ class Machine{
         `;
         main.setAttribute("data-index",`${id.toString()}`);
 
-        let sliderDiv = document.getElementById("slider");
+        const sliderDiv = document.getElementById("slider");
         if (id > currentId){
             sliderDiv.innerHTML = "";
             sliderDiv.append(extra);
